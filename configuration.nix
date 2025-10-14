@@ -104,7 +104,8 @@
     rofi-wayland # app launcher
     hyprlock # lock screen
     hyprshot # screenshot
-    nwg-look
+    nwg-look # theme setter
+    rose-pine-hyprcursor
   ];
 
   # Configure Nvidia
