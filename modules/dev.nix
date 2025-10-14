@@ -15,12 +15,18 @@
       alacritty-theme
       tmux
       tmuxifier
-      nerd-fonts.meslo-lg
       stow
       htop
       unrar
       tree
       exfat
+      python314
+      poetry
+    ];
+
+    # Make nerd font accessible to applications
+    fonts.packages = with pkgs; [
+      nerd-fonts.meslo-lg
     ];
 
     # Configure fish shell
