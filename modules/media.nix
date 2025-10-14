@@ -13,7 +13,6 @@
       (ffmpeg-full.override { withUnfree = true; })
       gimp3-with-plugins
       inkscape-with-extensions
-      davinci-resolve # free version
       imagemagick
       yt-dlp
       obs-studio
