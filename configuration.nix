@@ -103,7 +103,8 @@
     swww # wallpaper
     rofi-wayland # app launcher
     hyprlock # lock screen
-    hyprshot
+    hyprshot # screenshot
+    nwg-look
   ];
 
   # Configure Nvidia
