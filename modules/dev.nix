@@ -20,6 +20,7 @@
       htop
       unrar
       tree
+      exfat
     ];
 
     # Configure fish shell

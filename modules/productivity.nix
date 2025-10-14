@@ -14,6 +14,15 @@
       anki-bin
       hugo
     ];
+
+    # Create syncthing service that'll survive reboot
+    services.syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+      user = "bobby";
+      dataDir = "/home/bobby";
+    };
+
   };
 
 }
