@@ -16,6 +16,7 @@
       davinci-resolve # free version
       imagemagick
       yt-dlp
+      obs-studio
     ];
   };
 
