@@ -9,6 +9,7 @@
 
     environment.systemPackages = with pkgs; [
       neovim
+      gcc
       ripgrep
       alacritty
       alacritty-theme
@@ -16,6 +17,9 @@
       tmuxifier
       nerd-fonts.meslo-lg
       stow
+      htop
+      unrar
+      tree
     ];
 
     # Configure fish shell

@@ -11,6 +11,8 @@
       rnote
       obsidian
       syncthing
+      anki-bin
+      hugo
     ];
   };
 
