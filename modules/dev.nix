@@ -40,6 +40,7 @@
         dotfiles = "cd ~/GitProjects/dotfiles";
         clipboard="xclip -sel clip";
         clean_image="exiftool -all= ";
+        logout="hyprctl dispatch exit";
       };
 
       interactiveShellInit = ''

@@ -8,7 +8,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./modules/modulebundle.nix
+      ../../modules/modulebundle.nix
     ];
 
   # Enable custom modules
