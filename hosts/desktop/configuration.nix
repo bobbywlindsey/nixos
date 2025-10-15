@@ -105,7 +105,13 @@
     hyprlock # lock screen
     hyprshot # screenshot
     nwg-look # theme setter
-    rose-pine-hyprcursor
+    rose-pine-hyprcursor # cursor theme
+    nautilus # file explorer
+    gnome.gvfs # samba
+    samba # samba
+    cifs-utils # old samba
+    rose-pine-gtk-theme # theme for file explorer
+    rose-pine-icon-theme # icon theme for file explorer
   ];
 
   # Configure Nvidia
@@ -114,8 +120,6 @@
   hardware = {
     # Opengl
     graphics.enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
   };
 
   hardware.nvidia = {
@@ -167,7 +171,22 @@
 
   # Handle desktop program interactions with each other (screensharing, file opening, etc...)
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.libsForQt5.xdg-desktop-portal-kde ];
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+  # Enable automount of drives (e.g. USB drive)
+  services.udisks2.enable = true;
+
+  # Samba client support for gtk file explorers
+  services.gvfs.enable = true;
+
+  # Enable network discovery in Nautilus
+  services.avahi = {
+    enable = true;
+    nssmdns4= true;
+  };
+
+  # Enable keyring to connect to external servers
+  services.gnome.gnome-keyring.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
