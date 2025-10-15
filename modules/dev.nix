@@ -11,17 +11,20 @@
       neovim
       gcc
       ripgrep
-      alacritty
-      alacritty-theme
+      kitty
       tmux
       tmuxifier
       stow
       htop
       unrar
       tree
+      dysk # disk storage info
+      caligula # dd wrapper
       exfat
       python314
       poetry
+      bc # calculator
+      pastel # color tool
     ];
 
     # Make nerd font accessible to applications
@@ -40,7 +43,9 @@
         dotfiles = "cd ~/GitProjects/dotfiles";
         clipboard="xclip -sel clip";
         clean_image="exiftool -all= ";
+        disk="dysk";
         logout="hyprctl dispatch exit";
+        shutdown="systemctl poweroff";
       };
 
       interactiveShellInit = ''

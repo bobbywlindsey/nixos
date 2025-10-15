@@ -16,6 +16,9 @@
       imagemagick
       yt-dlp
       obs-studio
+      picard # music metadata
+      rmpc # terminal music player
+      astroterm # celestial viewer
     ];
   };
 

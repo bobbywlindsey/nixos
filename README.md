@@ -14,7 +14,7 @@ Then install dotfiles for hyprland, neovim, etc...:
 1. `cd && git clone https://github.com/bobbywlindsey/dotfiles.git && cd dotfiles/nixos`
 2. `stow -t ~/ hypr`
 3. `stow -t ~/ nvim`
-4. `stow -t ~/ alacritty`
+4. `stow -t ~/ kitty`
 5. `stow -t ~/ waybar`
 6. `stow -t ~/ rofi`
 
@@ -23,3 +23,7 @@ Then install dotfiles for hyprland, neovim, etc...:
 Change directory into where you cloned the NixOS config. Then:
 
 `sudo nix flake update && sudo nixos-rebuild --flake .#desktop`
+
+### Cleanup
+
+`sudo nix-collect-garbage -d`
