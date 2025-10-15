@@ -16,8 +16,17 @@
   # productivity.enable = true; (enabled by default)
 
   # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    #systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+      gfxmodeEfi = "2560x1440";
+      theme = pkgs.catppuccin-grub;
+    };
+  };
 
   boot.initrd.luks.devices."luks-733f38a1-065f-4aa0-96b0-398b7e6447db".device = "/dev/disk/by-uuid/733f38a1-065f-4aa0-96b0-398b7e6447db";
   networking.hostName = "nixos"; # Define your hostname.
@@ -110,8 +119,11 @@
     gnome.gvfs # samba
     samba # samba
     cifs-utils # old samba
-    rose-pine-gtk-theme # theme for file explorer
-    rose-pine-icon-theme # icon theme for file explorer
+    papirus-icon-theme # icon theme for file explorer
+    catppuccin
+    catppuccin-gtk
+    catppuccin-cursors
+    catppuccin-papirus-folders
   ];
 
   # Configure Nvidia
