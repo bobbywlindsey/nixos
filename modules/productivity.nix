@@ -13,6 +13,7 @@
       syncthing
       anki-bin
       hugo
+      ticker
     ];
 
     # Create syncthing service that'll survive reboot
