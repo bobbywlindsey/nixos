@@ -25,6 +25,7 @@
       poetry
       bc # calculator
       pastel # color tool
+      docker_28
     ];
 
     # Make nerd font accessible to applications

@@ -124,6 +124,9 @@
     catppuccin-gtk
     catppuccin-cursors
     catppuccin-papirus-folders
+    pavucontrol # gtk volume control
+    networkmanagerapplet # gnome applet to control NetworkManager
+    blueman # gtk bluetooth manager
   ];
 
   # Configure Nvidia
