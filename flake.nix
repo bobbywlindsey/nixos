@@ -16,12 +16,12 @@
         ];
       };
 
-      #laptop = inputs.nixpkgs.lib.nixosSystem {
-        #modules = [
-          #{ nix.settings.experimental-features = ["nix-command" "flakes"]; }
-          #./hosts/laptop/configuration.nix
-        #];
-      #};
+      laptop = inputs.nixpkgs.lib.nixosSystem {
+        modules = [
+          { nix.settings.experimental-features = ["nix-command" "flakes"]; }
+          ./hosts/laptop/configuration.nix
+        ];
+      };
       
     };
 
