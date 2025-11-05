@@ -14,6 +14,7 @@
       anki-bin
       hugo
       ticker
+      epy
     ];
 
     # Create syncthing service that'll survive reboot

@@ -17,15 +17,15 @@
 
   # Bootloader
   boot.loader = {
-    #systemd-boot.enable = true;
+    systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      gfxmodeEfi = "2560x1440";
-      theme = pkgs.catppuccin-grub;
-    };
+    # grub = {
+    #   enable = true;
+    #   device = "nodev";
+    #   efiSupport = true;
+    #   gfxmodeEfi = "2560x1440";
+    #   theme = pkgs.catppuccin-grub;
+    # };
   };
 
   boot.initrd.luks.devices."luks-733f38a1-065f-4aa0-96b0-398b7e6447db".device = "/dev/disk/by-uuid/733f38a1-065f-4aa0-96b0-398b7e6447db";
@@ -88,9 +88,6 @@
     ];
   };
 
-  # Install firefox
-  programs.firefox.enable = true;
-
   # Allow unfree packages (Nvidia drivers, Discord, etc...)
   nixpkgs.config.allowUnfree = true;
 
@@ -100,6 +97,9 @@
     curl
     wget
     home-manager
+    librewolf
+    qutebrowser
+
     # Hyprland
     waybar # bar
     # Display work spaces correctly on Hyprland

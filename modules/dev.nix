@@ -42,11 +42,14 @@
         dls = "cd ~/Downloads/";
         projects = "cd ~/GitProjects";
         dotfiles = "cd ~/GitProjects/dotfiles";
+        notes = "cd ~/Documents/External\\ Brain && nvim .";
+        log = "cd ~/Documents/Bullet\\ Journal && nvim .";
         clipboard="xclip -sel clip";
         clean_image="exiftool -all= ";
         disk="dysk";
         logout="hyprctl dispatch exit";
         shutdown="systemctl poweroff";
+        ssh="eval (ssh-agent -c) && ssh-add ~/.ssh/id_ed25519";
       };
 
       interactiveShellInit = ''
