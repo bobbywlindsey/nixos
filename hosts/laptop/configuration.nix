@@ -21,10 +21,11 @@
     efi.canTouchEfiVariables = true;
   };
 
-  # Use latest kernel.
+  # Use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.luks.devices."luks-46a44d17-e59d-4729-885e-d804e6fd7ac3".device = "/dev/disk/by-uuid/46a44d17-e59d-4729-885e-d804e6fd7ac3";
+
   networking.hostName = "laptop"; # Define your hostname.
   # Enable networking
   networking.networkmanager.enable = true;
@@ -68,6 +69,31 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
+  # Enable bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        # Shows battery charge of connected devices on supported
+        # Bluetooth adapters. Defaults to 'false'.
+        Experimental = true;
+        # When enabled other devices can connect faster to us, however
+        # the tradeoff is increased power consumption. Defaults to
+        # 'false'.
+        FastConnectable = true;
+      };
+      Policy = {
+        # Enable all controllers when they are found. This includes
+        # adapters present on start as well as adapters that are plugged
+        # in later on. Defaults to 'true'.
+        AutoEnable = true;
+      };
+    };
+  };
+  services.blueman.enable = true;
+
 
   # Enable touchpad support (enabled default in most desktopManager)
   # services.xserver.libinput.enable = true;
@@ -121,7 +147,6 @@
     catppuccin-papirus-folders
     pavucontrol # gtk volume control
     networkmanagerapplet # gnome applet to control NetworkManager
-    blueman # gtk bluetooth manager
   ];
 
   # Configure Hyprland
