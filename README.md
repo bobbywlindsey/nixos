@@ -28,4 +28,5 @@ Change directory into where you cloned the NixOS config. Then:
 
 ### Cleanup
 
-`sudo nix-collect-garbage -d`
+1. `sudo nix-collect-garbage -d`
+2. `sudo nixos-rebuild switch --flake .#desktop`

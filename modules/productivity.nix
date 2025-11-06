@@ -15,6 +15,7 @@
       hugo
       ticker
       epy
+      signal-desktop
     ];
 
     # Create syncthing service that'll survive reboot
