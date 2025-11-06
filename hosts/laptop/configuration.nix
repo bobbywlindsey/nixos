@@ -180,9 +180,8 @@
         CPU_MAX_PERF_ON_BAT = 80;
 
        # Help save long-term battery health
-       START_CHARGE_THRESH_BAT0 = 30; # 30 and below it starts to charge
+       START_CHARGE_THRESH_BAT0 = 85; # 30 and below it starts to charge
        STOP_CHARGE_THRESH_BAT0 = 90; # 90 and above it stops charging
-
       };
   };
 
