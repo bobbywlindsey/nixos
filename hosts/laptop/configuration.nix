@@ -26,9 +26,18 @@
 
   boot.initrd.luks.devices."luks-46a44d17-e59d-4729-885e-d804e6fd7ac3".device = "/dev/disk/by-uuid/46a44d17-e59d-4729-885e-d804e6fd7ac3";
 
-  networking.hostName = "laptop"; # Define your hostname.
-  # Enable networking
-  networking.networkmanager.enable = true;
+  networking.hostName = "laptop"; # Define your hostname
+
+  # Enable networking with OpenVPN support
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      # 1. sudo nmcli connection import type openvpn file ~/vpn-config.ovpn
+      # 2. Use networkmanager to add vpn user name in configuration
+      # 3. nmcli connection up vpn-config
+      networkmanager-openvpn
+    ];
+  };
 
   # Set your time zone
   time.timeZone = "America/Denver";

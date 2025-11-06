@@ -16,6 +16,7 @@
       ticker
       epy
       signal-desktop
+      mullvad-vpn
     ];
 
     # Create syncthing service that'll survive reboot
