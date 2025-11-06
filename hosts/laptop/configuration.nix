@@ -26,8 +26,8 @@
 
   boot.initrd.luks.devices."luks-46a44d17-e59d-4729-885e-d804e6fd7ac3".device = "/dev/disk/by-uuid/46a44d17-e59d-4729-885e-d804e6fd7ac3";
   networking.hostName = "laptop"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant
-  networking.wireless.userControlled.enable = true;
+  # Enable networking
+  networking.networkmanager.enable = true;
 
   # Set your time zone
   time.timeZone = "America/Denver";
@@ -106,7 +106,9 @@
     swww # wallpaper
     rofi-wayland # app launcher
     hyprlock # lock screen
+    hypridle # idle daemon
     hyprshot # screenshot
+    brightnessctl # control screen brightness
     nwg-look # theme setter
     rose-pine-hyprcursor # cursor theme
     nautilus # file explorer
@@ -116,7 +118,7 @@
     papirus-icon-theme # icon theme for file explorer
     catppuccin
     catppuccin-gtk
-    catppuccin-cursors
+    catppuccin-cursors.mochaDark
     catppuccin-papirus-folders
     pavucontrol # gtk volume control
     networkmanagerapplet # gnome applet to control NetworkManager
@@ -157,6 +159,33 @@
 
   # Enable keyring to connect to external servers
   services.gnome.gnome-keyring.enable = true;
+
+  # Prevent overheating for intel CPUs
+  services.thermald.enable = true;
+
+  # Power management
+  services.tlp = {
+      enable = true;
+      settings = {
+        # See availble governor and energy policies:
+        # tlp-stat -p
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_performance";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MAX_PERF_ON_AC = 100;
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_MAX_PERF_ON_BAT = 80;
+
+       # Help save long-term battery health
+       START_CHARGE_THRESH_BAT0 = 30; # 30 and below it starts to charge
+       STOP_CHARGE_THRESH_BAT0 = 90; # 90 and above it stops charging
+
+      };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
