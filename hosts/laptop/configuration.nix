@@ -110,7 +110,6 @@
     hyprshot # screenshot
     brightnessctl # control screen brightness
     nwg-look # theme setter
-    rose-pine-hyprcursor # cursor theme
     nautilus # file explorer
     gnome.gvfs # samba
     samba # samba

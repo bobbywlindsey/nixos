@@ -113,7 +113,6 @@
     hyprlock # lock screen
     hyprshot # screenshot
     nwg-look # theme setter
-    rose-pine-hyprcursor # cursor theme
     nautilus # file explorer
     gnome.gvfs # samba
     samba # samba
@@ -121,7 +120,7 @@
     papirus-icon-theme # icon theme for file explorer
     catppuccin
     catppuccin-gtk
-    catppuccin-cursors
+    catppuccin-cursors.mochaDark
     catppuccin-papirus-folders
     pavucontrol # gtk volume control
     networkmanagerapplet # gnome applet to control NetworkManager
