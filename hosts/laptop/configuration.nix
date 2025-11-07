@@ -12,8 +12,10 @@
     ];
 
 
-  # Enable custom modules
+  # Disable custom modules
   gaming.enable = lib.mkOverride 1000 false;
+
+  security.devices = [ "wlp0s20f3" ];
 
   # Bootloader
   boot.loader = {
