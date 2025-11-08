@@ -28,7 +28,7 @@
 
   boot.initrd.luks.devices."luks-46a44d17-e59d-4729-885e-d804e6fd7ac3".device = "/dev/disk/by-uuid/46a44d17-e59d-4729-885e-d804e6fd7ac3";
 
-  networking.hostName = "laptop"; # Define your hostname
+  networking.hostName = "laptop";
 
   # Enable networking with OpenVPN support
   networking.networkmanager = {

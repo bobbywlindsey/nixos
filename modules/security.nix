@@ -25,6 +25,7 @@
       mullvad-vpn
       macchanger
       iproute2
+      veracrypt
     ];
 
     # Spoof mac address
@@ -53,8 +54,8 @@
             ${pkgs.iproute2}/bin/ip link set "${x}" down
 
             # There is a 1/2^24 chance macchanger will randomly pick the real MAC
-            # address. We try to making it really unlikely repeating it up to
-            # three times. Theoretically speaking this leaks information about the
+            # address. We try to make it really unlikely by repeating it up to
+            # three times. Theoretically speaking, this leaks information about the
             # real MAC address at each occasion but actually leaking the real MAC
             # address will be more serious in practice.
             for i in 1 2 3; do
