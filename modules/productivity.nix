@@ -14,7 +14,6 @@
       anki-bin
       hugo
       ticker
-      epy
       signal-desktop
     ];
 

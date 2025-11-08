@@ -81,6 +81,28 @@
     #media-session.enable = true;
   };
 
+  # Configure MPD for music player
+  # Config stored /run/mpd/mpd.conf
+  services.mpd = {
+    enable = true;
+    user = "bobby";
+    musicDirectory = "/home/bobby/Music";
+    playlistDirectory = "/home/bobby/Music/playlists";
+    extraConfig = ''
+      auto_update "yes"
+      restore_paused "yes"
+      max_output_buffer_size "16384"
+
+      audio_output {
+        type "pipewire"
+        name "PipeWire Output"
+      }
+    '';
+  };
+  systemd.services.mpd.environment = {
+    XDG_RUNTIME_DIR = "/run/user/1000";
+  };
+
   # Enable bluetooth
   hardware.bluetooth = {
     enable = true;

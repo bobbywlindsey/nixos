@@ -16,7 +16,9 @@
       imagemagick
       yt-dlp
       obs-studio
+      epy # terminal ebook reader
       picard # music metadata
+      mpc # cli interface for MPD
       rmpc # terminal music player
       astroterm # celestial viewer
     ];
