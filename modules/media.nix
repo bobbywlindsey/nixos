@@ -18,6 +18,8 @@
       obs-studio
       epy # terminal ebook reader
       picard # music metadata
+      playerctl # control media player
+      mpdris2 # MPRIS 2 support for mpd
       mpc # cli interface for MPD
       rmpc # terminal music player
       astroterm # celestial viewer
