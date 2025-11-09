@@ -13,6 +13,7 @@
       (ffmpeg-full.override { withUnfree = true; })
       gimp3-with-plugins
       inkscape-with-extensions
+      darktable
       imagemagick
       yt-dlp
       obs-studio
