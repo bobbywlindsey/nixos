@@ -26,6 +26,7 @@
       macchanger
       iproute2
       veracrypt
+      exiftool
     ];
 
     # Spoof mac address

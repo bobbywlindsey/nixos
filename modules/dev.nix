@@ -26,6 +26,7 @@
       bc # calculator
       pastel # color tool
       docker_28
+      fd # user-friendly alternative to find
     ];
 
     # Make nerd font accessible to applications
