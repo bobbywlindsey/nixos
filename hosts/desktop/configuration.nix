@@ -29,10 +29,18 @@
   };
 
   boot.initrd.luks.devices."luks-733f38a1-065f-4aa0-96b0-398b7e6447db".device = "/dev/disk/by-uuid/733f38a1-065f-4aa0-96b0-398b7e6447db";
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  # Enable networking with OpenVPN support
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      # 1. sudo nmcli connection import type openvpn file ~/vpn-config.ovpn
+      # 2. Use networkmanager to add vpn user name in configuration
+      # 3. nmcli connection up vpn-config
+      networkmanager-openvpn
+    ];
+  };
 
   # Set your time zone
   time.timeZone = "America/Denver";
@@ -74,6 +82,52 @@
     #media-session.enable = true;
   };
 
+  # Configure MPD for music player
+  # Config stored /run/mpd/mpd.conf
+  services.mpd = {
+    enable = true;
+    user = "bobby";
+    musicDirectory = "/home/bobby/Music";
+    playlistDirectory = "/home/bobby/Music/playlists";
+    extraConfig = ''
+      auto_update "yes"
+      restore_paused "yes"
+      max_output_buffer_size "16384"
+
+      audio_output {
+        type "pipewire"
+        name "PipeWire Output"
+      }
+    '';
+  };
+  systemd.services.mpd.environment = {
+    XDG_RUNTIME_DIR = "/run/user/1000";
+  };
+
+  # Enable bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        # Shows battery charge of connected devices on supported
+        # Bluetooth adapters. Defaults to 'false'.
+        Experimental = true;
+        # When enabled other devices can connect faster to us, however
+        # the tradeoff is increased power consumption. Defaults to
+        # 'false'.
+        FastConnectable = true;
+      };
+      Policy = {
+        # Enable all controllers when they are found. This includes
+        # adapters present on start as well as adapters that are plugged
+        # in later on. Defaults to 'true'.
+        AutoEnable = true;
+      };
+    };
+  };
+  services.blueman.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager)
   # services.xserver.libinput.enable = true;
 
@@ -111,6 +165,7 @@
     swww # wallpaper
     rofi-wayland # app launcher
     hyprlock # lock screen
+    hypridle # idle daemon
     hyprshot # screenshot
     nwg-look # theme setter
     nautilus # file explorer
@@ -124,7 +179,6 @@
     catppuccin-papirus-folders
     pavucontrol # gtk volume control
     networkmanagerapplet # gnome applet to control NetworkManager
-    blueman # gtk bluetooth manager
   ];
 
   # Configure Nvidia
