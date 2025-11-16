@@ -149,6 +149,7 @@
   environment.systemPackages = with pkgs; [
     curl
     wget
+    unzip
     wl-clipboard
     home-manager
     librewolf

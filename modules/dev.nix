@@ -27,6 +27,7 @@
       pastel # color tool
       docker_28
       fd # user-friendly alternative to find
+      nodejs_24
     ];
 
     # Make nerd font accessible to applications
