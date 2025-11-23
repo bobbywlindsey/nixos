@@ -16,6 +16,7 @@
       ticker
       signal-desktop
       bc
+      rofimoji
     ];
 
     # Create syncthing service that'll survive reboot
