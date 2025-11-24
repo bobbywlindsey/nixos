@@ -219,30 +219,53 @@
   # Enable keyring to connect to external servers
   services.gnome.gnome-keyring.enable = true;
 
+  # Mimetypes
+  xdg = {
+    mime = {
+      enable = true;
+      defaultApplications = {
+        "inode/directory" = ["org.gnome.Nautilus.desktop"]; # Directories
+        "text/plain" = ["nvim.desktop"]; # Plain text
+        #"application/vnd.openxmlformats-officedocument.wordprocessingml.document" = ["onlyoffice-desktopeditors.desktop"]; # .docx
+        #"application/vnd.openxmlformats-officedocument.presentationml.presentation" = ["onlyoffice-desktopeditors.desktop"]; # .pptx
+        #"application/pdf" = ["onlyoffice-desktopeditors.desktop"]; # .pdf
+        #"application/zip" = ["xarchiver.desktop"];
+        "text/*" = ["nvim.desktop"]; # Any text files
+        "video/*" = ["vlc.desktop"]; # Any video files
+        "x-scheme-handler/https" = ["org.qutebrowser.qutebrowser.desktop"]; # Links
+        "x-scheme-handler/http" = ["org.qutebrowser.qutebrowser.desktop"]; # Links
+        "x-scheme-handler/mailto" = ["org.qutebrowser.qutebrowser.desktop"]; # Links
+        "image/*" = ["gimp.desktop"]; # Images
+        "image/png" = ["gimp.desktop"];
+        "image/jpeg" = ["gimp.desktop"];
+      };
+    };
+  };
+
   # Prevent overheating for intel CPUs
   services.thermald.enable = true;
 
   # Power management
   services.tlp = {
-      enable = true;
-      settings = {
-        # See availble governor and energy policies:
-        # tlp-stat -p
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+    enable = true;
+    settings = {
+      # See availble governor and energy policies:
+      # tlp-stat -p
+       CPU_SCALING_GOVERNOR_ON_AC = "performance";
+       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_performance";
-        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+       CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_performance";
+       CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
 
-        CPU_MIN_PERF_ON_AC = 0;
-        CPU_MAX_PERF_ON_AC = 100;
-        CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 80;
+       CPU_MIN_PERF_ON_AC = 0;
+       CPU_MAX_PERF_ON_AC = 100;
+       CPU_MIN_PERF_ON_BAT = 0;
+       CPU_MAX_PERF_ON_BAT = 80;
 
-       # Help save long-term battery health
-       START_CHARGE_THRESH_BAT0 = 85; # 30 and below it starts to charge
-       STOP_CHARGE_THRESH_BAT0 = 90; # 90 and above it stops charging
-      };
+      # Help save long-term battery health
+      START_CHARGE_THRESH_BAT0 = 85; # 30 and below it starts to charge
+      STOP_CHARGE_THRESH_BAT0 = 90; # 90 and above it stops charging
+     };
   };
 
   # Some programs need SUID wrappers, can be configured further or are

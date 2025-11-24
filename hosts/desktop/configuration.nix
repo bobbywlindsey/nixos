@@ -257,6 +257,29 @@
   # Enable keyring to connect to external servers
   services.gnome.gnome-keyring.enable = true;
 
+  # Mimetypes
+  xdg = {
+    mime = {
+      enable = true;
+      defaultApplications = {
+        "inode/directory" = ["org.gnome.Nautilus.desktop"]; # Directories
+        "text/plain" = ["nvim.desktop"]; # Plain text
+        #"application/vnd.openxmlformats-officedocument.wordprocessingml.document" = ["onlyoffice-desktopeditors.desktop"]; # .docx
+        #"application/vnd.openxmlformats-officedocument.presentationml.presentation" = ["onlyoffice-desktopeditors.desktop"]; # .pptx
+        #"application/pdf" = ["onlyoffice-desktopeditors.desktop"]; # .pdf
+        #"application/zip" = ["xarchiver.desktop"];
+        "text/*" = ["nvim.desktop"]; # Any text files
+        "video/*" = ["vlc.desktop"]; # Any video files
+        "x-scheme-handler/https" = ["org.qutebrowser.qutebrowser.desktop"]; # Links
+        "x-scheme-handler/http" = ["org.qutebrowser.qutebrowser.desktop"]; # Links
+        "x-scheme-handler/mailto" = ["org.qutebrowser.qutebrowser.desktop"]; # Links
+        "image/*" = ["gimp.desktop"]; # Images
+        "image/png" = ["gimp.desktop"];
+        "image/jpeg" = ["gimp.desktop"];
+      };
+    };
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
