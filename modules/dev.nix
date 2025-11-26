@@ -46,7 +46,7 @@
         dotfiles = "cd ~/GitProjects/dotfiles";
         notes = "cd ~/Documents/External\\ Brain && nvim .";
         log = "cd ~/Documents/Bullet\\ Journal && nvim .";
-        clipboard="xclip -sel clip";
+        clipboard="wl-copy";
         clean_image="exiftool -all= ";
         disk="dysk";
         logout="hyprctl dispatch exit";
