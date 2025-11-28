@@ -29,6 +29,8 @@
       exiftool
     ];
 
+    services.mullvad-vpn.enable = true;
+
     # Spoof mac address
     # Can be run at any time with:
     # sudo systemctl start macchanger-wlan0.service
