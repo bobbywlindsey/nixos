@@ -154,6 +154,7 @@
     home-manager
     librewolf
     qutebrowser
+    firefox
 
     # Hyprland
     waybar # bar

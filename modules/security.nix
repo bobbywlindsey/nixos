@@ -27,6 +27,7 @@
       iproute2
       veracrypt
       exiftool
+      bitwarden-desktop
     ];
 
     services.mullvad-vpn.enable = true;

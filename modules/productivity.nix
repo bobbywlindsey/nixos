@@ -17,6 +17,8 @@
       signal-desktop
       bc
       rofimoji
+      sdcv
+      libreoffice-fresh
     ];
 
     # Create syncthing service that'll survive reboot
