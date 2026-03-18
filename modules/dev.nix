@@ -33,6 +33,7 @@
     # Make nerd font accessible to applications
     fonts.packages = with pkgs; [
       nerd-fonts.meslo-lg
+      fantasque-sans-mono
     ];
 
     # Configure fish shell
@@ -52,6 +53,7 @@
         logout="hyprctl dispatch exit";
         shutdown="systemctl poweroff";
         sshinit="eval (ssh-agent -c) && ssh-add ~/.ssh/id_ed25519";
+        listfonts="fc-list : family | sort | uniq";
       };
 
       interactiveShellInit = ''
