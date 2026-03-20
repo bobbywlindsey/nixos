@@ -9,6 +9,11 @@
 
     environment.systemPackages = with pkgs; [
       neovim
+      tree-sitter # tree-sitter-cli for parsing syntax
+      lua-language-server # lua lsp for neovim
+      pyright # python lsp for neovim
+      nodePackages.vscode-json-languageserver # json lsp for neovim
+      yaml-language-server # yaml lsp for neovim
       gcc
       ripgrep
       kitty
