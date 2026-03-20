@@ -33,6 +33,7 @@
     # Make nerd font accessible to applications
     fonts.packages = with pkgs; [
       nerd-fonts.meslo-lg
+      nerd-fonts.hack
       fantasque-sans-mono
     ];
 
@@ -62,9 +63,9 @@
                ~/bin \
 	$PATH
 
-	function fish_greeting
-          echo "Time to get shit done ᕦ(ò_óˇ)ᕤ"
-	end
+    function fish_greeting
+    end
+
       '';
     };
 
