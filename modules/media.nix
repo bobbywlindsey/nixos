@@ -24,6 +24,7 @@
       mpc # cli interface for MPD
       rmpc # terminal music player
       astroterm # celestial viewer
+      kdePackages.gwenview # image viewer
     ];
   };
 

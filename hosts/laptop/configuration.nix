@@ -236,9 +236,11 @@
         "x-scheme-handler/https" = ["org.qutebrowser.qutebrowser.desktop"]; # Links
         "x-scheme-handler/http" = ["org.qutebrowser.qutebrowser.desktop"]; # Links
         "x-scheme-handler/mailto" = ["org.qutebrowser.qutebrowser.desktop"]; # Links
-        "image/*" = ["gimp.desktop"]; # Images
-        "image/png" = ["gimp.desktop"];
-        "image/jpeg" = ["gimp.desktop"];
+        "image/*" = ["org.kde.gwenview.desktop"];
+        "image/png" = ["org.kde.gwenview.desktop"];
+        "image/jpeg" = ["org.kde.gwenview.desktop"];
+        "image/gif" = ["org.kde.gwenview.desktop"];
+        "image/bmp" = ["org.kde.gwenview.desktop"];
       };
     };
   };
