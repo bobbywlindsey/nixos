@@ -165,7 +165,6 @@
     )
     dunst # notification daemon
     libnotify # notification dependency for dunst
-    swww # wallpaper
     rofi # app launcher
     hyprlock # lock screen
     hypridle # idle daemon
