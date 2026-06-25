@@ -16,6 +16,7 @@
       yaml-language-server # yaml lsp for neovim
       gcc
       ripgrep
+      fzf
       kitty
       tmux
       tmuxifier
@@ -66,11 +67,10 @@
       	set -g -x PATH /usr/local/bin \
                ~/.tmuxifier/bin \
                ~/bin \
-	$PATH
+        $PATH
 
-    function fish_greeting
-    end
-
+        function fish_greeting
+        end
       '';
     };
 

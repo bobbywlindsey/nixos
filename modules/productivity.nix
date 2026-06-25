@@ -19,6 +19,7 @@
       rofimoji
       sdcv
       libreoffice-fresh
+      wineWow64Packages.waylandFull
     ];
 
     # Create syncthing service that'll survive reboot
