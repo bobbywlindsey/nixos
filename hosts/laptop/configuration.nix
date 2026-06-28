@@ -86,18 +86,19 @@
   services.mpd = {
     enable = true;
     user = "bobby";
-    musicDirectory = "/home/bobby/Music";
-    playlistDirectory = "/home/bobby/Music/playlists";
-    extraConfig = ''
-      auto_update "yes"
-      restore_paused "yes"
-      max_output_buffer_size "16384"
-
-      audio_output {
-        type "pipewire"
-        name "PipeWire Output"
-      }
-    '';
+    settings = {
+      music_directory = "/home/bobby/Music";
+      playlist_directory = "/home/bobby/Music/playlists";
+      auto_update = "yes";
+      restore_paused = "yes";
+      max_output_buffer_size = "16384";
+      audio_output = [
+        {
+          type = "pipewire";
+          name = "PipeWire Output";
+        }
+      ];
+    };
   };
   systemd.services.mpd.environment = {
     XDG_RUNTIME_DIR = "/run/user/1000";
@@ -143,6 +144,13 @@
 
   # Allow unfree packages (Nvidia drivers, Discord, etc...)
   nixpkgs.config.allowUnfree = true;
+
+  # Allow EOL electron version until signal-desktop package
+  # updates its dependency
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+    "pnpm-10.29.2"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -293,6 +301,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "26.05"; # Did you read the comment?
 
 }

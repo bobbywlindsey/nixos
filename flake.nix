@@ -2,7 +2,7 @@
   description = "NixOS config for multiple hosts";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     awww.url = "git+https://codeberg.org/LGFae/awww";
   };
 
