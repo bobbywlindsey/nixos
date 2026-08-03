@@ -184,9 +184,9 @@
     samba # samba
     cifs-utils # old samba
     papirus-icon-theme # icon theme for file explorer
-    catppuccin
-    catppuccin-gtk
-    catppuccin-cursors.mochaDark
+    glib # gsettings
+    gsettings-desktop-schemas
+    gnome-themes-extra
     catppuccin-papirus-folders
     pavucontrol # gtk volume control
     networkmanagerapplet # gnome applet to control NetworkManager
@@ -197,6 +197,8 @@
     enable = true;
     xwayland.enable = true;
   };
+
+  programs.dconf.enable = true;
 
   environment.sessionVariables = {
     # If your cursor becomes invisible
@@ -210,7 +212,7 @@
 
   # Handle desktop program interactions with each other (screensharing, file opening, etc...)
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
 
   # Enable automount of drives (e.g. USB drive)
   services.udisks2.enable = true;
