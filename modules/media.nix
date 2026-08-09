@@ -11,9 +11,10 @@
       vlc
       calibre
       (ffmpeg-full.override { withUnfree = true; })
-      gimp3-with-plugins
+      gimp-with-plugins
       inkscape-with-extensions
       darktable
+      rawtherapee
       imagemagick
       yt-dlp
       obs-studio
@@ -24,7 +25,7 @@
       mpc # cli interface for MPD
       rmpc # terminal music player
       astroterm # celestial viewer
-      kdePackages.gwenview # image viewer
+      swayimg # Wayland image viewer
     ];
   };
 

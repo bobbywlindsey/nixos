@@ -61,6 +61,7 @@
         shutdown="systemctl poweroff";
         sshinit="eval (ssh-agent -c) && ssh-add ~/.ssh/id_ed25519";
         listfonts="fc-list : family | sort | uniq";
+        smb="cd /run/user/$(id -u)/gvfs/";
       };
 
       interactiveShellInit = ''
