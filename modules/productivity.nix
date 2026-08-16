@@ -16,9 +16,9 @@
       ticker
       signal-desktop
       bc
-      rofimoji
       sdcv
       libreoffice-fresh
+      voxtype # local voice-to-text
       wineWow64Packages.waylandFull
     ];
 

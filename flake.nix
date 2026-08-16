@@ -4,9 +4,15 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     awww.url = "git+https://codeberg.org/LGFae/awww";
+
+    elephant.url = "github:abenz1267/elephant";
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
   };
 
-  outputs = { self, nixpkgs, awww }: let
+  outputs = { self, nixpkgs, awww, walker, elephant }: let
     # LaTeX parser (utftex) for neovim
     libtexprintf = nixpkgs.legacyPackages.x86_64-linux.stdenv.mkDerivation {
       pname = "libtexprintf";
@@ -27,6 +33,7 @@
   in {
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
+        specialArgs = { inputs = { inherit walker elephant; }; };
         modules = [
           { nix.settings.experimental-features = [ "nix-command" "flakes" ]; }
           ./hosts/desktop/configuration.nix
@@ -39,6 +46,7 @@
         ];
       };
       laptop = nixpkgs.lib.nixosSystem {
+        specialArgs = { inputs = { inherit walker elephant; }; };
         modules = [
           { nix.settings.experimental-features = [ "nix-command" "flakes" ]; }
           ./hosts/laptop/configuration.nix

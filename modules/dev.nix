@@ -15,8 +15,10 @@
       vscode-json-languageserver # json lsp for neovim
       yaml-language-server # yaml lsp for neovim
       gcc
-      ripgrep
-      fzf
+      ripgrep # search content of files
+      fzf # fuzzy finder
+      zoxide # cd command that learns your habits
+      eza # modern replacement for ls
       kitty
       tmux
       tmuxifier
@@ -32,8 +34,10 @@
       bc # calculator
       pastel # color tool
       docker_29
-      fd # user-friendly alternative to find
+      fd # modern alternative to find
       nodejs_24
+      bat # cat with syntax highlighting
+      tldr # tldr for man pages
     ];
 
     # Make nerd font accessible to applications
