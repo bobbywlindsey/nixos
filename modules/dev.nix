@@ -38,6 +38,7 @@
       nodejs_24
       bat # cat with syntax highlighting
       tldr # tldr for man pages
+      btop # monitor resources
     ];
 
     # Make nerd font accessible to applications
