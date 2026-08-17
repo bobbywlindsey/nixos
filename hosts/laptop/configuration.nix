@@ -175,7 +175,7 @@
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
       })
     )
-    dunst # notification daemon
+    mako # notification daemon
     libnotify # notification dependency for dunst
     hyprlock # lock screen
     hypridle # idle daemon
