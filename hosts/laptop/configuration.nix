@@ -136,7 +136,7 @@
 
   # Define a user account. Don't forget to set a password with 'passwd'
   users.users.bobby = {
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
     isNormalUser = true;
     description = "bobby";
     extraGroups = [ "networkmanager" "wheel" ];
@@ -181,6 +181,7 @@
     hypridle # idle daemon
     hyprshot # screenshot
     brightnessctl # control screen brightness
+    everforest-gtk-theme # everforest theme for GTK
     nwg-look # theme setter
     nautilus # file explorer
     gnome.gvfs # samba
@@ -194,6 +195,18 @@
     pavucontrol # gtk volume control
     networkmanagerapplet # gnome applet to control NetworkManager
   ];
+
+  # Handle desktop program interactions with each other (screensharing, file opening, etc...)
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
+
+  # Map GTK desktop schemas
+  environment.sessionVariables.XDG_DATA_DIRS = [
+    "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
+  ];
+
+  # Accesibility service
+  services.gnome.at-spi2-core.enable = true;
 
   # Configure Hyprland
   programs.hyprland = {
@@ -212,10 +225,6 @@
 
     MOZ_ENABLE_WAYLAND = "1";
   };
-
-  # Handle desktop program interactions with each other (screensharing, file opening, etc...)
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
 
   # Enable automount of drives (e.g. USB drive)
   services.udisks2.enable = true;
@@ -239,20 +248,19 @@
       defaultApplications = {
         "inode/directory" = ["org.gnome.Nautilus.desktop"]; # Directories
         "text/plain" = ["nvim.desktop"]; # Plain text
+        "application/pdf" = ["org.gnome.Evince.desktop"];
+        "text/*" = ["nvim.desktop"]; # Any text files
+        "video/*" = ["mpv.desktop"]; # Any video files
+        "x-scheme-handler/https" = ["librewolf.desktop"]; # Links
+        "x-scheme-handler/http" = ["librewolf.desktop"]; # Links
+        "x-scheme-handler/mailto" = ["librewolf.desktop"]; # Links
+        "image/*" = ["swayimg.desktop"];
+        "image/png" = ["swayimg.desktop"];
+        "image/jpeg" = ["swayimg.desktop"];
+        "image/gif" = ["swayimg.desktop"];
+        "image/bmp" = ["swayimg.desktop"];
         #"application/vnd.openxmlformats-officedocument.wordprocessingml.document" = ["onlyoffice-desktopeditors.desktop"]; # .docx
         #"application/vnd.openxmlformats-officedocument.presentationml.presentation" = ["onlyoffice-desktopeditors.desktop"]; # .pptx
-        #"application/pdf" = ["onlyoffice-desktopeditors.desktop"]; # .pdf
-        #"application/zip" = ["xarchiver.desktop"];
-        "text/*" = ["nvim.desktop"]; # Any text files
-        "video/*" = ["vlc.desktop"]; # Any video files
-        "x-scheme-handler/https" = ["org.qutebrowser.qutebrowser.desktop"]; # Links
-        "x-scheme-handler/http" = ["org.qutebrowser.qutebrowser.desktop"]; # Links
-        "x-scheme-handler/mailto" = ["org.qutebrowser.qutebrowser.desktop"]; # Links
-        "image/*" = ["org.kde.gwenview.desktop"];
-        "image/png" = ["org.kde.gwenview.desktop"];
-        "image/jpeg" = ["org.kde.gwenview.desktop"];
-        "image/gif" = ["org.kde.gwenview.desktop"];
-        "image/bmp" = ["org.kde.gwenview.desktop"];
       };
     };
   };

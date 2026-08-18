@@ -48,11 +48,14 @@
       fantasque-sans-mono
     ];
 
-    # Configure fish shell
-    programs.fish = {
+    # Configure Zsh shell
+    programs.zsh = {
       enable = true;
 
-      shellAbbrs = {
+      shellAliases = {
+        #..="cd ..";
+        #...="cd ../..";
+        #....="cd ../../..";
         v = "nvim";
         dls = "cd ~/Downloads/";
         projects = "cd ~/GitProjects";
@@ -61,6 +64,7 @@
         log = "cd ~/Documents/Bullet\\ Journal && nvim .";
         clipboard="wl-copy";
         clean_image="exiftool -all= ";
+        decompress="tar -xzf";
         disk="dysk";
         logout="hyprctl dispatch exit";
         shutdown="systemctl poweroff";
@@ -70,13 +74,47 @@
       };
 
       interactiveShellInit = ''
-      	set -g -x PATH /usr/local/bin \
-               ~/.tmuxifier/bin \
-               ~/bin \
-        $PATH
+        export PATH="/usr/local/bin:$HOME/.tmuxifier/bin:$HOME/bin:$PATH"
 
-        function fish_greeting
-        end
+        if command -v eza &> /dev/null; then
+          alias ls='eza -lh --group-directories-first --icons=auto'
+          alias lsa='ls -a'
+          alias lt='eza --tree --level=2 --long --icons --git'
+          alias lta='lt -a'
+        fi
+
+        if [[ "$TERM" == "xterm-kitty" ]]; then
+          alias ff="fzf --preview 'case \$(file --mime-type -b {}) in image/*) kitty icat --clear --transfer-mode=memory --stdin=no --place=\''${FZF_PREVIEW_COLUMNS}x\''${FZF_PREVIEW_LINES}@0x0 {} ;; *) bat --style=numbers --color=always {} ;; esac'"
+        else
+          alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+        fi
+        alias eff='$EDITOR "$(ff)"'
+        sff() { if [ $# -eq 0 ]; then echo "Usage: sff <destination> (e.g. sff host:/tmp/)"; return 1; fi; local file; file=$(find . -type f -printf '%T@\t%p\n' | sort -rn | cut -f2- | ff) && [ -n "$file" ] && scp "$file" "$1"; }
+
+        if command -v zoxide &> /dev/null; then
+          alias cd="zd"
+          zd() {
+            if (( $# == 0 )); then
+              builtin cd ~ || return
+            elif [[ -d $1 ]]; then
+              builtin cd "$1" || return
+            else
+              if ! z "$@"; then
+                echo "Error: Directory not found"
+                return 1
+              fi
+
+              printf "\U000F17A9 "
+              pwd
+            fi
+          }
+        fi
+
+        open() (
+          xdg-open "$@" >/dev/null 2>&1 &
+        )
+
+        compress() { tar -czf "''${1%/}.tar.gz" "''${1%/}"; }
       '';
     };
 

@@ -9,6 +9,7 @@
 
     environment.systemPackages = with pkgs; [
       vlc
+      mpv # video player
       calibre
       (ffmpeg-full.override { withUnfree = true; })
       gimp-with-plugins
@@ -26,6 +27,7 @@
       rmpc # terminal music player
       astroterm # celestial viewer
       swayimg # Wayland image viewer
+      evince # pdf viewer
     ];
   };
 
