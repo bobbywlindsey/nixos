@@ -191,7 +191,6 @@
     glib # gsettings
     gsettings-desktop-schemas
     gnome-themes-extra
-    catppuccin-papirus-folders
     pavucontrol # gtk volume control
     networkmanagerapplet # gnome applet to control NetworkManager
   ];

@@ -39,6 +39,7 @@
       bat # cat with syntax highlighting
       tldr # tldr for man pages
       btop # monitor resources
+      jq # JSON processor
     ];
 
     # Make nerd font accessible to applications
