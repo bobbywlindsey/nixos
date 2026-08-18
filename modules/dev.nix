@@ -54,9 +54,9 @@
       enable = true;
 
       shellAliases = {
-        #..="cd ..";
-        #...="cd ../..";
-        #....="cd ../../..";
+        ".."="cd ..";
+        "..."="cd ../..";
+        "...."="cd ../../..";
         v = "nvim";
         dls = "cd ~/Downloads/";
         projects = "cd ~/GitProjects";
@@ -69,7 +69,7 @@
         disk="dysk";
         logout="hyprctl dispatch exit";
         shutdown="systemctl poweroff";
-        sshinit="eval (ssh-agent -c) && ssh-add ~/.ssh/id_ed25519";
+        sshinit="eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/id_ed25519";
         listfonts="fc-list : family | sort | uniq";
         smb="cd /run/user/$(id -u)/gvfs/";
       };
@@ -93,6 +93,7 @@
         sff() { if [ $# -eq 0 ]; then echo "Usage: sff <destination> (e.g. sff host:/tmp/)"; return 1; fi; local file; file=$(find . -type f -printf '%T@\t%p\n' | sort -rn | cut -f2- | ff) && [ -n "$file" ] && scp "$file" "$1"; }
 
         if command -v zoxide &> /dev/null; then
+          eval "$(zoxide init zsh)"
           alias cd="zd"
           zd() {
             if (( $# == 0 )); then
