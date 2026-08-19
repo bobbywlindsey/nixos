@@ -30,6 +30,11 @@
       dataDir = "/home/bobby";
     };
 
+    # AirDrop alternative
+    programs.localsend = {
+      enable = true;
+    };
+
   };
 
 }
